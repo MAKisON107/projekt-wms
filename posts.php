@@ -16,6 +16,28 @@ include_once('database.php');
     printNavbar();
     ?>
     <main class="container mt-5">
+        <h2>Posty</h2>
+        <?php
+        $posts = getAllPosts();
+        if(count($posts) == 0){
+            ?>
+            <p>Brak Postów</p>
+            <?php
+        } else {
+            foreach($posts as $a) {
+                ?>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><?=$a['title']?></h5>
+                        <h6 class="card-subtible mb-2 text-muted"><?=$a['categoryName']?></h6>
+                        <p class="card-link"><a href="post.php?id=<?=$a['id']?>"target="_blank">Więcej</a></p>
+
+                    </div>
+                </div>
+                <?php
+            }
+        }
+        ?>
     </main>
     <script src="js/bootstrap/bootstrap.min.js"></script>
 </body>
