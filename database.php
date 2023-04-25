@@ -20,7 +20,7 @@ function getAllPosts() {
 }
 function getPost($id) {
     $connection = getConnection();
-    $sql = "SELECT posts.id AS id, posts.title AS title, posts.content AS content, posts.createdAt AS createdAt, categories.name AS categoryName, admins.firstName AS firstName, admins.lastName AS lastName FROM posts INNER JOIN categories ON posts.categoryId=categories.Id INNER JOIN admins ON posts.authorId=authors.id WHERE id=$id" ;
+    $sql = "SELECT posts.id AS id, posts.title AS title, posts.content AS content, posts.createdAt AS createdAt, categories.name AS categoryName, admins.firstName AS firstName, admins.lastName AS lastName FROM posts INNER JOIN categories ON posts.categoryId=categories.Id INNER JOIN admins ON posts.authorId=admins.id WHERE posts.id=$id" ;
     $result = $connection->query($sql);
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     if (count($rows) == 0){
@@ -28,4 +28,25 @@ function getPost($id) {
         exit();
     }
     return $rows[0];
+}
+function getAllCategories() {
+    $connection = getConnection();
+    $sql = 'select * from categories';
+    $result = $connection->query($sql);
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+    $connection->close();
+    return $rows;
+}
+function addPost() {
+    $values= ['title','categoryId',"content"];
+    if(!isPostValid($values)) return;
+    $categoryId = $_POST['categoryId'];
+    $authorId = 1;
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $connection = getConnection();
+    $sql = "insert into posts(categoryId,authorId,title,content) values('$categoryId','$authorId','$title','$content')";
+    $connection->query($sql);
+    $connection->close();
+    header('Location: admin-posts.php');
 }
