@@ -50,3 +50,16 @@ function addPost() {
     $connection->close();
     header('Location: admin-posts.php');
 }
+function addMessage() {
+    $values=['email','firstName','lastName','content'];
+    if(!isPostValid($values)) return;
+    $email = $_POST['email'];
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $content = $_POST['content'];
+    $connection = getConnection();
+    $sql = "insert into messages(email,firstName,lastName,content) values('$email','$firstName','$lastName','$content')";
+    $result = $connection->query($sql);
+    $connection->close();
+    header('Location: contact.php?succeeded=1');
+}

@@ -3,7 +3,7 @@ include('config.php');
 function printNavbar() {
     global $nrSpotkania, $title;
     ?>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php"><?=$title?></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
@@ -15,6 +15,7 @@ function printNavbar() {
             <a class="nav-link" aria-current="page" href="index.php">Strona Główna</a></li>
             <a class="nav-link" aria-current="page" href="posts.php">Posty</a></li>
             <a class="nav-link" aria-current="page" href="admin-posts.php">Zarządzanie-Posty</a></li>
+            <a class="nav-link" aria-current="page" href="contact.php">Kontakt</a></li>
         </ul>
         </div>
     </div>
