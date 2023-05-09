@@ -23,7 +23,7 @@ addMessage();
             <?=printFormField('firstName','Imię','text')?>
             <?=printFormField('lastName','Nazwisko','text')?>
             <?=printTextarea('content','Treść')?>
-            <input type="submit" class="btn btn-outline-primary" value="Wyślij wiadomości!">
+            <input type="submit" class="btn btn-outline-info" value="Wyślij wiadomości!">
         </form>
     
         <?php

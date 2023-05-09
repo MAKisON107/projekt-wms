@@ -17,7 +17,7 @@ include_once('database.php');
     ?>
     <main class="container mt-5">
         <h2>Posty</h2>
-        <table class="table table-striped">
+        <table class="table table-default">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -29,7 +29,7 @@ include_once('database.php');
             <tbody>
                 <tr>
                     <td colspan="5">
-                        <a href="admin-add-post.php" class="btn btn-outline-primary col-12">Nowy post</a>
+                        <a href="admin-add-post.php" class="btn btn-outline-dark col-12">Nowy post</a>
                     </td>
                 </tr>
                 <?php

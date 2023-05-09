@@ -23,7 +23,7 @@ addPost();
             <?=printFormField('title','Tytuł','text')?>
             <?=printSelect('categoryId','Kategoria',$categories)?>
             <?=printTextarea('content','Treść')?>
-            <input type="submit" class="btn btn-outline-primary" value="Dodaj!">
+            <input type="submit" class="btn btn-outline-success" value="Dodaj!">
         </form>
     </main>
     <script src="js/bootstrap/bootstrap.min.js"></script>
