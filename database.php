@@ -77,3 +77,25 @@ function login() {
   if(!password_verify($password,$rows[0]['password'])) return;
   $_SESSION['adminId'] = $rows[0]['id'];
 }
+function deleteMessage() {
+    $id = $_GET['id'];
+    $connection = getConnection();
+    $sql = "delete from messages where id='$id'";
+    $connection->query($sql);
+    $connection->close();
+}
+function deletePost() {
+    $id = $_GET['id'];
+    $connection = getConnection();
+    $sql = "delete from posts where id='$id'";
+    $connection->query($sql);
+    $connection->close();
+}
+function getAllMessages() {
+    $connection = getConnection();
+    $sql = 'select * from messages';
+    $result = $connection->query($sql);
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+    $connection->close();
+    return $rows;
+}
