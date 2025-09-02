@@ -74,7 +74,7 @@ function login() {
   $rows = $result->fetch_all(MYSQLI_ASSOC);
   $connection->close();
   if(count($rows)== 0) return;
-  if(!password_verify($password,$rows[0]['password'])) return;
+  if($rows[0]['password'] !== hash('sha256', $password) && !password_verify($password, $rows[0]['password'])) return;
   $_SESSION['adminId'] = $rows[0]['id'];
 }
 function deleteMessage() {
